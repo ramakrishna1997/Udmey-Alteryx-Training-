@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="102" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords>49B64C1CFB3B9D77781C322DF</Passwords>
+          <File RecordLimit="" FileFormat="23">odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||"public"."store_sales"</File>
+          <FormatSpecificOptions>
+            <PreSQL />
+            <ReadCentroids>False</ReadCentroids>
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <NoProgress>True</NoProgress>
+            <SessionReadOnly>True</SessionReadOnly>
+            <CacheData>False</CacheData>
+            <TableStyle>Quoted</TableStyle>
+            <ReadUncommitted>False</ReadUncommitted>
+            <PostSQL />
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DSN=PostgreSQL30
+Query="public"."store_sales"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field description="PrimaryKey" name="record_id" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="Int32" />
+            <Field name="store" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="Int32" />
+            <Field name="department" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="Int32" />
+            <Field name="weekly_sales" scale="6" size="30" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="FixedDecimal" />
+            <Field name="isholiday" size="5" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="V_String" />
+            <Field name="date" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="Date" />
+            <Field name="year" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="Int32" />
+            <Field name="month" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="Int32" />
+            <Field name="monthname" size="255" source="File: odbc:DSN=PostgreSQL30;UID=postgres;PWD=__EncPwd1__|||&quot;public&quot;.&quot;store_sales&quot;" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="LockInGui.LockInInput.LockInInput">
+        <Position x="18" y="42" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Connection>local</Connection>
+          <Query>"public"."store_sales"</Query>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Source=local
+Query="public"."store_sales"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="LockInGui.LockInBrowse.LockInBrowse">
+        <Position x="426" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+          <FirstNRecords>100</FirstNRecords>
+          <UseCache value="True" />
+          <DataFromCache>False</DataFromCache>
+          <CacheKey>1eb2e92d13cd108a2c4017264072a036</CacheKey>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_5264_._AlteryxInDBBrowseCache_1eb2e92d13cd108a2c4017264072a036.yxdb</TempFile>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 100 records
+Caching enabled</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInBrowse" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="LockInGui.LockInSummarize.LockInSummarize">
+        <Position x="246" y="30" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInSummarize" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Database connection</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="c1e40c17-1c8f-44be-9868-1bdcfe6f09b1" />
+      <Telemetry>
+        <PreviousWorkflowId value="e2fc2810-0328-4cd5-9365-b8f987cb8fd4" />
+        <OriginWorkflowId value="e2fc2810-0328-4cd5-9365-b8f987cb8fd4" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

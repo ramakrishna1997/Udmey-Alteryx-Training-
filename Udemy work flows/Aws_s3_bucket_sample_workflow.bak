@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxConnectorGui.AmazonS3Download.AmazonS3Download">
+        <Position x="54" y="222" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Bucket>bucket8348</Bucket>
+          <Object>relocation.csv</Object>
+          <AccessKey>AKIAZ75QOLBK7PZEBHLY</AccessKey>
+          <SecretKey>4261582BA7DA1ED309A50402BEF96D07B2CCF3BCF586240EB672F27CD36FBB03990C64578BD5E71B25FD4B0F3E28B6E22FD890C366058DC34336C62ABE65DC6412331EA47B3D6764FCA63F17108C8D3BB75EC118D</SecretKey>
+          <URL>Default</URL>
+          <ServerSideEncryption>None (Default)</ServerSideEncryption>
+          <KmsKeyId />
+          <UseS3V4 value="True" />
+          <EncryptionMode>1</EncryptionMode>
+          <FormatSpecificOptions>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <IgnoreErrors>False</IgnoreErrors>
+            <Delimeter>,</Delimeter>
+            <CodePage>65001</CodePage>
+            <AllowShareWrite>False</AllowShareWrite>
+            <FieldLen>254</FieldLen>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+            <SingleThreadRead>False</SingleThreadRead>
+          </FormatSpecificOptions>
+          <FileFormat value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Original_location" size="254" type="V_WString" />
+            <Field name="moved to" size="254" type="V_WString" />
+            <Field name="new_employees" size="254" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxAmazonS3Download" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxConnectorGui.AmazonS3Download.AmazonS3Download">
+        <Position x="54" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Bucket>bucket8348</Bucket>
+          <Object>store_information.csv</Object>
+          <AccessKey>AKIAZ75QOLBK7PZEBHLY</AccessKey>
+          <SecretKey>4261582BA7DA1ED309A50402BEF96D07B2CCF3BCF586240EB672F27CD36FBB03990C64578BD5E71B25FD4B0F3E28B6E22FD890C366058DC34336C62ABE65DC6412331EA47B3D6764FCA63F17108C8D3BB75EC118D</SecretKey>
+          <URL>Default</URL>
+          <ServerSideEncryption>None (Default)</ServerSideEncryption>
+          <KmsKeyId />
+          <UseS3V4 value="True" />
+          <EncryptionMode>1</EncryptionMode>
+          <FormatSpecificOptions>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <IgnoreErrors>False</IgnoreErrors>
+            <Delimeter>,</Delimeter>
+            <CodePage>65001</CodePage>
+            <AllowShareWrite>False</AllowShareWrite>
+            <FieldLen>254</FieldLen>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+            <SingleThreadRead>False</SingleThreadRead>
+          </FormatSpecificOptions>
+          <FileFormat value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" size="254" type="V_WString" />
+            <Field name="City" size="254" type="V_WString" />
+            <Field name="Country" size="254" type="V_WString" />
+            <Field name="Latitude" size="254" type="V_WString" />
+            <Field name="Longitude" size="254" type="V_WString" />
+            <Field name="number_of_employees" size="254" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxAmazonS3Download" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.FindReplace.FindReplace">
+        <Position x="222" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FieldFind>City</FieldFind>
+          <FieldSearch>Original_location</FieldSearch>
+          <ReplaceFoundField>moved to</ReplaceFoundField>
+          <FindMode>FindWhole</FindMode>
+          <NoCase value="False" />
+          <MatchWholeWord value="False" />
+          <ReplaceMode>Append</ReplaceMode>
+          <ReplaceMultipleFound value="True" />
+          <ReplaceAppendFields>
+            <Field field="moved to" />
+            <Field field="new_employees" />
+          </ReplaceAppendFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFindReplace" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="366" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IF IsNull([new_employees]) THEN [number_of_employees] ELSE [new_employees] ENDIF" field="number_of_employees" size="254" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>number_of_employees = IF IsNull([new_employees]) THEN [number_of_employees] ELSE...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="558" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="moved to" selected="False" />
+            <SelectField field="new_employees" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxConnectorGui.AmazonS3Upload.AmazonS3Upload">
+        <Position x="738" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Bucket>bucket8348</Bucket>
+          <Object>store_employee_updated_data.csv</Object>
+          <AccessKey>AKIAZ75QOLBK7PZEBHLY</AccessKey>
+          <SecretKey>4261582BA7DA1ED309A50402BEF96D07B2CCF3BCF586240EB672F27CD36FBB03990C64578BD5E71B25FD4B0F3E28B6E22FD890C366058DC34336C62ABE65DC6412331EA47B3D6764FCA63F17108C8D3BB75EC118D</SecretKey>
+          <URL>Default</URL>
+          <ServerSideEncryption>None (Default)</ServerSideEncryption>
+          <KmsKeyId />
+          <UseS3V4 value="True" />
+          <EncryptionMode>1</EncryptionMode>
+          <FormatSpecificOptions>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>65001</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <FileFormat value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxAmazonS3Upload" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Source" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Targets" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Aws_s3_bucket_sample_workflow</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="a7265ba0-8b5f-44d8-8943-b17c2807e5d0" />
+      <Telemetry>
+        <PreviousWorkflowId value="b861e8b9-e697-4bb4-a788-66692cbc0037" />
+        <OriginWorkflowId value="b861e8b9-e697-4bb4-a788-66692cbc0037" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

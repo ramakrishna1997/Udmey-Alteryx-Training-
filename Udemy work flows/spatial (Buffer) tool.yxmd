@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>housing.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="longitude" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="latitude" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="housing_median_age" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="total_rooms" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="total_bedrooms" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="population" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="households" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="median_income" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="median_house_value" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="ocean_proximity" size="255" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.CreatePoints.CreatePoints">
+        <Position x="162" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Fields fieldX="longitude" fieldY="latitude" />
+          <Mode>Double</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxCreatePoints" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings>
+        <Position x="318" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="GridSize">1.0</Value>
+          <Value name="MaxDistance">10.0</Value>
+          <Value name="DecayFunction">1 - [Distance]/[MaxDistance]</Value>
+          <Value name="SmoothResults">True</Value>
+          <Value name="OuputStacked">False</Value>
+          <Value name="OutputDonuts">True</Value>
+          <Value name="Input.Input"><![CDATA[Point=Centroid
+Heat (Optional)=median_house_value
+]]></Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="HeatMap.yxmc" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="438" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_10544_a2ddbc12be67c142ae41450f3b5d3a8c_\Engine_10544_e7b66b33ecad1343ad3cb4d0c3666284~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Map</DefaultTab>
+              <Hints>
+                <Map>
+                  <BaseMap>Alteryx_Light</BaseMap>
+                </Map>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Buffer.Buffer">
+        <Position x="282" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SpatialObjectField>Centroid</SpatialObjectField>
+          <IncludeSourceInOutput value="False" />
+          <GeneralizeToOnePercent value="True" />
+          <BufferSizeSource>FromField</BufferSizeSource>
+          <BufferSizeField>population</BufferSizeField>
+          <Units>Miles</Units>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxBuffer" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="378" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_10544_a2ddbc12be67c142ae41450f3b5d3a8c_\Engine_10544_664ba4e0ac2a804dbe2609ce5439453c~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Map</DefaultTab>
+              <Hints>
+                <Map>
+                  <BaseMap>Alteryx_Light</BaseMap>
+                </Map>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output80" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>spatial (Buffer) tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="3ae1c895-4527-492f-8c17-545f061ee68f" />
+      <Telemetry>
+        <PreviousWorkflowId value="d06da791-9a6a-4726-8b87-8b9bb7d9050b" />
+        <OriginWorkflowId value="ff835afe-36d7-465d-8682-9530f96a19a9" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

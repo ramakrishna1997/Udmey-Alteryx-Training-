@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxConnectorGui.AmazonS3Download.AmazonS3Download">
+        <Position x="66" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Bucket>bucket348</Bucket>
+          <Object>StoreSales.csv</Object>
+          <AccessKey>AKIAZ75QOLBKWXOD6H5G</AccessKey>
+          <SecretKey>405EE3F57C7D5E02D3791DE80347C3B7A25490BEAD6D3E507BDABE547AA959CD8235107F168A536D92957BA1E6CB637A1775B52B51DB0C41CE2B56D782DC5DCC78795629D04BBBA34966709F44037C648D2D5E1C0</SecretKey>
+          <URL>Default</URL>
+          <ServerSideEncryption>None (Default)</ServerSideEncryption>
+          <KmsKeyId />
+          <UseS3V4 value="True" />
+          <EncryptionMode>1</EncryptionMode>
+          <FormatSpecificOptions>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <IgnoreErrors>False</IgnoreErrors>
+            <Delimeter>,</Delimeter>
+            <CodePage>65001</CodePage>
+            <AllowShareWrite>False</AllowShareWrite>
+            <FieldLen>254</FieldLen>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+            <SingleThreadRead>False</SingleThreadRead>
+          </FormatSpecificOptions>
+          <FileFormat value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Record_ID" size="254" type="V_WString" />
+            <Field name="Store" size="254" type="V_WString" />
+            <Field name="Department" size="254" type="V_WString" />
+            <Field name="Weekly_Sales" size="254" type="V_WString" />
+            <Field name="IsHoliday" size="254" type="V_WString" />
+            <Field name="Date" size="254" type="V_WString" />
+            <Field name="Year" size="254" type="V_WString" />
+            <Field name="Month" size="254" type="V_WString" />
+            <Field name="MonthName" size="254" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxAmazonS3Download" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings>
+        <Position x="210" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">True</Value>
+          <Value name="Check Box (136)">True</Value>
+          <Value name="List Box (11)">"Record_ID","Store","Department","Weekly_Sales","IsHoliday","Date","Year","Month","MonthName"</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">False</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="330" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="Weekly_Sales" selected="True" type="Double" size="8" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="462" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="Store" action="GroupBy" rename="Store" />
+            <SummarizeField field="Date" action="GroupBy" rename="Date" />
+            <SummarizeField field="Year" action="GroupBy" rename="Year" />
+            <SummarizeField field="Month" action="GroupBy" rename="Month" />
+            <SummarizeField field="Weekly_Sales" action="Sum" rename="Total sales" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="570" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="1033">
+            <Field field="Total sales" order="Descending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Total sales - Descending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxConnectorGui.AmazonS3Upload.AmazonS3Upload">
+        <Position x="726" y="102" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Bucket>bucket348</Bucket>
+          <Object>Result/sum_of_sales.csv</Object>
+          <AccessKey>AKIAZ75QOLBKWXOD6H5G</AccessKey>
+          <SecretKey>405EE3F57C7D5E02D3791DE80347C3B7A25490BEAD6D3E507BDABE547AA959CD8235107F168A536D92957BA1E6CB637A1775B52B51DB0C41CE2B56D782DC5DCC78795629D04BBBA34966709F44037C648D2D5E1C0</SecretKey>
+          <URL>Default</URL>
+          <ServerSideEncryption>None (Default)</ServerSideEncryption>
+          <KmsKeyId />
+          <UseS3V4 value="True" />
+          <EncryptionMode>1</EncryptionMode>
+          <FormatSpecificOptions>
+            <Delimeter>,</Delimeter>
+            <ForceQuotes>False</ForceQuotes>
+            <LineEndStyle>CRLF</LineEndStyle>
+            <HeaderRow>True</HeaderRow>
+            <CodePage>65001</CodePage>
+            <WriteBOM>True</WriteBOM>
+          </FormatSpecificOptions>
+          <FileFormat value="0" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxConnectorEngine.dll" EngineDllEntryPoint="AlteryxAmazonS3Upload" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output26" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Aws import and upload data tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="d8872428-56e9-4020-adf3-062a2c324689" />
+      <Telemetry>
+        <PreviousWorkflowId value="41f8f5a4-764e-4875-a1f1-65a0811eb913" />
+        <OriginWorkflowId value="41f8f5a4-764e-4875-a1f1-65a0811eb913" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

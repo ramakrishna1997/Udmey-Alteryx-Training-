@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="2">
+      <GuiSettings Plugin="LockInGui.LockInInput.LockInInput">
+        <Position x="42" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Connection>local</Connection>
+          <Query>"public"."store_sales"</Query>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Source=local
+Query="public"."store_sales"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="LockInGui.LockInBrowse.LockInBrowse">
+        <Position x="426" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <CurrentTempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15536_3c13011719309346886b5ad36c979f34_\Engine_15652_2d21c043f2f14707a3f3ee25f7f79a57_._AlteryxInDBBrowseCache_3a6aea2d051ee7b6524f0a5a1c31b2a0.yxdb</CurrentTempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+          <FirstNRecords>100</FirstNRecords>
+          <UseCache value="True" />
+          <DataFromCache>True</DataFromCache>
+          <CacheKey>3a6aea2d051ee7b6524f0a5a1c31b2a0</CacheKey>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15652_._AlteryxInDBBrowseCache_3a6aea2d051ee7b6524f0a5a1c31b2a0.yxdb</TempFile>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 100 records
+Caching enabled</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInBrowse" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="LockInGui.LockInFilter.LockInFilter">
+        <Position x="162" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Simple</Mode>
+          <Simple>
+            <Field>record_id</Field>
+            <Operator>&gt;</Operator>
+            <Operands>
+              <Operand>5</Operand>
+            </Operands>
+          </Simple>
+          <ValidateBeforeRun value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>"record_id" &gt; 5</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInFilter" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="LockInGui.LockInFormula.LockInFormula">
+        <Position x="246" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ValidateBeforeRun value="True" />
+          <FormulaFields>
+            <FormulaField field="weekly_sales" type="FixedDecimal" expression="round(&quot;weekly_sales&quot;*2,1)" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>weekly_sales=round("weekly_sales"*2,1)</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInFormula" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="LockInGui.LockInSelect.LockInSelect">
+        <Position x="330" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="record_id" selected="True" rename="Record_id" />
+            <SelectField field="isholiday" selected="False" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInSelect" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="LockInGui.LockInInput.LockInInput">
+        <Position x="42" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Connection>local</Connection>
+          <Query>"public"."store_sales2"</Query>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Source=local
+Query="public"."store_sales2"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInInput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="LockInGui.LockInUnion.LockInUnion">
+        <Position x="366" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>ByName</Mode>
+          <FieldMode>Subset</FieldMode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInUnion" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="LockInGui.LockInBrowse.LockInBrowse">
+        <Position x="462" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <CurrentTempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15536_3c13011719309346886b5ad36c979f34_\Engine_15652_18edb48f248e4b1eafe0e675c8561633_._AlteryxInDBBrowseCache_d84430bd09436d5321866bea3dcd17fd.yxdb</CurrentTempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+          <FirstNRecords>100</FirstNRecords>
+          <UseCache value="True" />
+          <DataFromCache>True</DataFromCache>
+          <CacheKey>d84430bd09436d5321866bea3dcd17fd</CacheKey>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15652_._AlteryxInDBBrowseCache_d84430bd09436d5321866bea3dcd17fd.yxdb</TempFile>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 100 records
+Caching enabled</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInBrowse" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="LockInGui.LockInBrowse.LockInBrowse">
+        <Position x="570" y="402" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+          <FirstNRecords>100</FirstNRecords>
+          <UseCache value="True" />
+          <DataFromCache>False</DataFromCache>
+          <CacheKey>cf5fb436249bd6e3b2b27445ef0adf8c</CacheKey>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15652_._AlteryxInDBBrowseCache_cf5fb436249bd6e3b2b27445ef0adf8c.yxdb</TempFile>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 100 records
+Caching enabled</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInBrowse" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="LockInGui.LockInJoin.LockInJoin">
+        <Position x="378" y="390" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JoinMode>INNER</JoinMode>
+          <JoinFields>
+            <JoinInfo connection="Left">
+              <Field field="store" />
+            </JoinInfo>
+            <JoinInfo connection="Right">
+              <Field field="store" />
+            </JoinInfo>
+          </JoinFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Inner Join</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInJoin" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="LockInGui.LockInInput.LockInInput">
+        <Position x="42" y="366" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Connection>local</Connection>
+          <Query>"public"."store_info"</Query>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Source=local
+Query="public"."store_info"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInInput" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="LockInGui.LockInBrowse.LockInBrowse">
+        <Position x="162" y="366" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <CurrentTempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15536_3c13011719309346886b5ad36c979f34_\Engine_15652_2f346dd12b75413a8195d0bb6101e407_._AlteryxInDBBrowseCache_248f97433073225af957a7aa1c398559.yxdb</CurrentTempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+          <FirstNRecords>100</FirstNRecords>
+          <UseCache value="True" />
+          <DataFromCache>False</DataFromCache>
+          <CacheKey>248f97433073225af957a7aa1c398559</CacheKey>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15652_._AlteryxInDBBrowseCache_248f97433073225af957a7aa1c398559.yxdb</TempFile>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 100 records
+Caching enabled</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInBrowse" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="534" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Ramakrishna\Desktop\salesinfo.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>salesinfo.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="record_id" source="File: C:\Users\Ramakrishna\Desktop\salesinfo.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="store" source="File: C:\Users\Ramakrishna\Desktop\salesinfo.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="employee" source="File: C:\Users\Ramakrishna\Desktop\salesinfo.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="city" size="255" source="File: C:\Users\Ramakrishna\Desktop\salesinfo.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="dop" source="File: C:\Users\Ramakrishna\Desktop\salesinfo.xlsx|||`Sheet1$`" type="Date" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="LockInGui.LockInStreamIn.LockInStreamIn">
+        <Position x="246" y="498" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Connection>local</Connection>
+          <CreateMode>TempTable</CreateMode>
+          <Table />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Source=local
+Temporary Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="LockInEngine.dll" EngineDllEntryPoint="AlteryxLockInStreamIn" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="True" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="13" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="13" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Data stream-in tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="3db2de09-6702-4dc8-b8d2-e26b9de24fd3" />
+      <Telemetry>
+        <PreviousWorkflowId value="b7e5abaa-d565-4450-8bf9-10a021245f0f" />
+        <OriginWorkflowId value="618931d1-89e8-456a-9a56-91189dda84c6" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

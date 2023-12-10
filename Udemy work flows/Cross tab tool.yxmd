@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="30" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>StoreSales.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Record_ID" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Store" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Department" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Weekly_Sales" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="IsHoliday" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Bool" />
+            <Field name="Date" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Date" />
+            <Field name="Year" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Month" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="MonthName" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.CrossTab.CrossTab">
+        <Position x="186" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupFields>
+            <Field field="Store" />
+            <Field field="Year" />
+          </GroupFields>
+          <HeaderField field="MonthName" />
+          <DataField field="Weekly_Sales" />
+          <Methods>
+            <Method method="Sum" />
+          </Methods>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Store" source="CrossTab:Group:Sum:" type="Double" />
+            <Field name="Year" size="255" source="CrossTab:Group:Sum:" type="V_String" />
+            <Field name="April" source="CrossTab:Header:MonthName:April:Sum:" type="Double" />
+            <Field name="August" source="CrossTab:Header:MonthName:August:Sum:" type="Double" />
+            <Field name="December" source="CrossTab:Header:MonthName:December:Sum:" type="Double" />
+            <Field name="February" source="CrossTab:Header:MonthName:February:Sum:" type="Double" />
+            <Field name="January" source="CrossTab:Header:MonthName:January:Sum:" type="Double" />
+            <Field name="July" source="CrossTab:Header:MonthName:July:Sum:" type="Double" />
+            <Field name="June" source="CrossTab:Header:MonthName:June:Sum:" type="Double" />
+            <Field name="March" source="CrossTab:Header:MonthName:March:Sum:" type="Double" />
+            <Field name="May" source="CrossTab:Header:MonthName:May:Sum:" type="Double" />
+            <Field name="November" source="CrossTab:Header:MonthName:November:Sum:" type="Double" />
+            <Field name="October" source="CrossTab:Header:MonthName:October:Sum:" type="Double" />
+            <Field name="September" source="CrossTab:Header:MonthName:September:Sum:" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxCrossTab" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="282" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="IF IsNull([April]) THEN 0 ELSE [April] ENDIF" field="April" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([August]) THEN 0 ELSE [August] ENDIF" field="August" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([December]) THEN 0 ELSE [December] ENDIF" field="December" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([February]) THEN 0 ELSE [February] ENDIF" field="February" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([January]) THEN 0 ELSE [January] ENDIF" field="January" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([July]) THEN 0 ELSE [July] ENDIF" field="July" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([June]) THEN 0 ELSE [June] ENDIF" field="June" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([March]) THEN 0 ELSE [March] ENDIF" field="March" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([May]) THEN 0 ELSE [May] ENDIF" field="May" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([November]) THEN 0 ELSE [November] ENDIF" field="November" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([October]) THEN 0 ELSE [October] ENDIF" field="October" size="8" type="Double" />
+            <FormulaField expression="IF IsNull([September]) THEN 0 ELSE [September] ENDIF" field="September" size="8" type="Double" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>April = IF IsNull([April]) THEN 0 ELSE [April] ENDIF
+August = IF IsNull([August]...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Cross tab tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="444ea33a-3c95-4d88-b1a4-9d432ca13273" />
+      <Telemetry>
+        <PreviousWorkflowId value="a1f12740-21d6-490e-9787-bbac8b696eca" />
+        <OriginWorkflowId value="a1f12740-21d6-490e-9787-bbac8b696eca" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

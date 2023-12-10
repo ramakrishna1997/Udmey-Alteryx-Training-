@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>StoreSales.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Record_ID" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Store" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Department" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Weekly_Sales" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="IsHoliday" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Bool" />
+            <Field name="Date" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Date" />
+            <Field name="Year" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Month" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="MonthName" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="City" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="210" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="Store" action="GroupBy" rename="Store" />
+            <SummarizeField field="Year" action="GroupBy" rename="Year" />
+            <SummarizeField field="Weekly_Sales" action="Avg" rename="Avg_Weekly_Sales" />
+            <SummarizeField field="Weekly_Sales" action="Count" rename="Count" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings>
+        <Position x="330" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Value">Avg_Weekly_Sales</Value>
+          <Value name="Weight">Count</Value>
+          <Value name="OutputFieldName">WeightedAverage</Value>
+          <Value name="GroupFields">Store</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="WeightedAvg.yxmc" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="150" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="Weekly_Sales" action="Avg" rename="Avg_Weekly_Sales" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings>
+        <Position x="438" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="CountRecords.yxmc" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="5" Connection="Input8" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>weighted Average and count record tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="6d0ce9ee-0c71-4923-9770-1db9a77a8fce" />
+      <Telemetry>
+        <PreviousWorkflowId value="dcb22902-cf2a-4a30-838f-18dd33981656" />
+        <OriginWorkflowId value="dcb22902-cf2a-4a30-838f-18dd33981656" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

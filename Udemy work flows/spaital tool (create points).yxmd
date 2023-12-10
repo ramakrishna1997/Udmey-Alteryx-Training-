@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>housing.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="longitude" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="latitude" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="housing_median_age" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="total_rooms" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="total_bedrooms" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="population" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="households" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="median_income" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="median_house_value" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="ocean_proximity" size="255" source="File: C:\Users\Ramakrishna\Downloads\housing.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings>
+        <Position x="246" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">True</Value>
+          <Value name="Check Box (136)">True</Value>
+          <Value name="List Box (11)">""</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">False</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="354" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="longitude" action="GroupBy" rename="longitude" />
+            <SummarizeField field="latitude" action="GroupBy" rename="latitude" />
+            <SummarizeField field="housing_median_age" action="Sum" rename="Sum_housing_median_age" />
+            <SummarizeField field="total_rooms" action="Sum" rename="Sum_total_rooms" />
+            <SummarizeField field="total_bedrooms" action="Sum" rename="Sum_total_bedrooms" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
+        <Position x="474" y="78" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>First</Mode>
+          <N>2</N>
+          <GroupFields orderChanged="False">
+            <Field name="longitude" />
+            <Field name="latitude" />
+            <Field name="Sum_housing_median_age" />
+            <Field name="Sum_total_rooms" />
+            <Field name="Sum_total_bedrooms" />
+          </GroupFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 2 rows</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="618" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="1033">
+            <Field field="Sum_housing_median_age" order="Descending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Sum_housing_median_age - Descending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.RunningTotal.RunningTotal">
+        <Position x="354" y="234" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupByFields>
+            <Field field="longitude" />
+            <Field field="latitude" />
+          </GroupByFields>
+          <RunningTotalFields>
+            <Field field="median_income" />
+            <Field field="median_house_value" />
+          </RunningTotalFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxRunningTotal" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.CreatePoints.CreatePoints">
+        <Position x="798" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Fields fieldX="longitude" fieldY="latitude" />
+          <Mode>Double</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxCreatePoints" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="894" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_15076_8754213ef6602b4da79f356a5547699b_\Engine_15076_1659b37429d4d5439301b876d524e89d~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Map</DefaultTab>
+              <Hints>
+                <Map>
+                  <BaseMap>Alteryx_Light</BaseMap>
+                </Map>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output26" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output26" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>spaital tool (create points)</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="a0782ad8-d675-4f73-bdba-47b9471a6b7a" />
+      <Telemetry>
+        <PreviousWorkflowId value="f11ac589-e040-4e8f-89fc-d5bdef26d042" />
+        <OriginWorkflowId value="f11ac589-e040-4e8f-89fc-d5bdef26d042" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

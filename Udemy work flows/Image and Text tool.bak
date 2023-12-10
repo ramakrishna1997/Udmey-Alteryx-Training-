@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>StoreSales.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Record_ID" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Store" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Department" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Weekly_Sales" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="IsHoliday" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Bool" />
+            <Field name="Date" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Date" />
+            <Field name="Year" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Month" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="MonthName" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="City" size="255" source="File: C:\Users\Ramakrishna\Downloads\StoreSales.xlsx|||`Sheet1$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings>
+        <Position x="186" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">True</Value>
+          <Value name="Check Box (136)">True</Value>
+          <Value name="List Box (11)">"Record_ID","Store","Department","Weekly_Sales","IsHoliday","Date","Year","Month","MonthName","City"</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">False</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+        <Position x="306" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <UniqueFields>
+            <Field field="Record_ID" />
+            <Field field="Store" />
+            <Field field="Department" />
+            <Field field="Weekly_Sales" />
+            <Field field="IsHoliday" />
+            <Field field="Date" />
+            <Field field="Year" />
+            <Field field="Month" />
+            <Field field="MonthName" />
+            <Field field="City" />
+          </UniqueFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="414" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="Store" action="GroupBy" rename="Store" />
+            <SummarizeField field="City" action="GroupBy" rename="City" />
+            <SummarizeField field="Year" action="GroupBy" rename="Year" />
+            <SummarizeField field="Weekly_Sales" action="Sum" rename="Sum_Weekly_Sales" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+        <Position x="522" y="162" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SortInfo locale="1033">
+            <Field field="Store" order="Descending" />
+          </SortInfo>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Store - Descending</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="618" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowBarGraph value="True" />
+          <BarGraphField>Store</BarGraphField>
+          <TableFields orderChanged="False">
+            <Field name="Store" selected="True" Alignment="Right" />
+            <Field name="City" selected="True" Alignment="Left" Width="" />
+            <Field name="Year" selected="True" Alignment="Right" />
+            <Field name="Sum_Weekly_Sales" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+            <Style Name="BarGraph" Width="100" Height="15" AutoScale="true" Min="0" Max="100" BaseValue="0" LabelBars="true" ColorMode="Single" TextColor="#b0c4de" BarPalette="#b30023,#00488c,#1e6c0b,#d84000,#f0b400,#332600,#5400a8,#434c43" BarFormula="&quot;Green&quot;" OutlineBars="true" OutlineColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="b552da37-0789-4cb3-8829-0c8ddb285fb3">
+              <RowRule value="False" />
+              <HighPrecedence value="False" />
+              <Field>City</Field>
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar>City</SimpleVar>
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>Dallas</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#000000" BackColor="#20df2f" />
+              <PrettyName>City Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="846" y="234" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_8004_a0ac9ddb78aa574d8689c85ace73ab9b_\Engine_8004_4a6da2d5350fd34da32bfc5357c89fe2~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="618" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces json:Array="true" xmlns:json="http://james.newtonking.com/projects/json">
+              <type>pie</type>
+              <mode>markers</mode>
+              <name>&lt;b&gt;PIE CHART&lt;/b&gt;</name>
+              <valuessrc>Sum_Weekly_Sales</valuessrc>
+              <marker>
+                <line>
+                  <width>0</width>
+                </line>
+              </marker>
+              <textinfo>label+percent</textinfo>
+              <labelssrc>City</labelssrc>
+            </Traces>
+            <Layout>
+              <title>
+                <text>&lt;b&gt;Weekly sales on cities&amp;nbsp;&lt;/b&gt;</text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+                <size>15</size>
+                <color>rgb(50, 173, 32)</color>
+              </font>
+              <autosize>false</autosize>
+              <width>698</width>
+              <height>850</height>
+              <showlegend>true</showlegend>
+              <hovermode>closest</hovermode>
+              <xaxis>
+                <range>-1</range>
+                <range>6</range>
+                <autorange>true</autorange>
+              </xaxis>
+              <yaxis>
+                <range>-1</range>
+                <range>4</range>
+                <autorange>true</autorange>
+              </yaxis>
+              <margin>
+                <pad>0</pad>
+                <t>101</t>
+                <b>79</b>
+                <l>79</l>
+                <r>79</r>
+              </margin>
+              <legend>
+                <font>
+                  <size>12</size>
+                  <family>serif</family>
+                </font>
+                <borderwidth>0</borderwidth>
+              </legend>
+              <paper_bgcolor>rgb(255, 255, 255)</paper_bgcolor>
+              <ppi>72</ppi>
+            </Layout>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="834" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_8004_a0ac9ddb78aa574d8689c85ace73ab9b_\Engine_8004_c17365d123021b4c845f48996509c158~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="630" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces json:Array="true" xmlns:json="http://james.newtonking.com/projects/json">
+              <type>bar</type>
+              <mode>markers</mode>
+              <name>&lt;b&gt;Bar Graph&lt;/b&gt;</name>
+              <orientation>v</orientation>
+              <textposition>None</textposition>
+              <ysrc>Sum_Weekly_Sales</ysrc>
+              <xsrc>City</xsrc>
+              <transforms json:Array="true">
+                <type>groupby</type>
+                <groupssrc>Year</groupssrc>
+                <groups>2010</groups>
+                <groups>2011</groups>
+                <groups>2012</groups>
+                <groups>2012</groups>
+                <groups>2010</groups>
+                <groups>2011</groups>
+                <groups>2010</groups>
+                <groups>2011</groups>
+                <groups>2012</groups>
+                <groups>2012</groups>
+                <groups>2011</groups>
+                <groups>2010</groups>
+              </transforms>
+            </Traces>
+            <Layout>
+              <title>
+                <text>&lt;b&gt;weekly sales along with cities and Month&lt;/b&gt;</text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+                <size>12</size>
+              </font>
+              <autosize>false</autosize>
+              <width>700</width>
+              <height>849</height>
+              <showlegend>true</showlegend>
+              <hovermode>closest</hovermode>
+              <xaxis>
+                <range>-0.664389924334138</range>
+                <range>3.3356100756658611</range>
+                <autorange>false</autorange>
+                <title>
+                  <text>&lt;b&gt;City&lt;/b&gt;</text>
+                </title>
+                <tickfont>
+                  <size>12</size>
+                  <family>serif</family>
+                </tickfont>
+                <nticks>0</nticks>
+                <showline>false</showline>
+                <type>category</type>
+              </xaxis>
+              <yaxis>
+                <range>8923.9972755078634</range>
+                <range>394357.24990708678</range>
+                <autorange>false</autorange>
+                <title>
+                  <text>&lt;br&gt;</text>
+                </title>
+                <showline>true</showline>
+                <type>linear</type>
+              </yaxis>
+              <margin>
+                <pad>0</pad>
+                <t>100</t>
+                <b>80</b>
+                <l>80</l>
+                <r>80</r>
+              </margin>
+              <legend>
+                <font>
+                  <size>12</size>
+                </font>
+                <borderwidth>0</borderwidth>
+              </legend>
+            </Layout>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="846" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_8004_a0ac9ddb78aa574d8689c85ace73ab9b_\Engine_8004_0da670422e2a15499902d08036d0fa80~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.JoinMultiple.JoinMultiple">
+        <Position x="558" y="378" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JoinByRecPos value="True" />
+          <OutputJoinOnly value="False" />
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Input_#2_Chart" selected="True" rename="Input_#2_Chart" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoinMultiple" />
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="1230" y="318" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_8004_a0ac9ddb78aa574d8689c85ace73ab9b_\Engine_8004_9356ee29791ec74682517290f8476b3c~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerLayout.PortfolioComposerLayout">
+        <Position x="846" y="474" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupingMode>PerRecord</GroupingMode>
+          <PreserveSourceFields value="False" />
+          <Orientation>V</Orientation>
+          <Separator>Continuous</Separator>
+          <Width>100%</Width>
+          <Height />
+          <BorderStyle Enabled="false" Color="#000000" Width="2" />
+          <SeparatorStyle Enabled="false" Color="#000000" Width="1" />
+          <Padding>20</Padding>
+          <LayoutFields orderChanged="False">
+            <Field name="Table" selected="True" Alignment="Center" />
+            <Field name="Chart" selected="True" Alignment="Center" />
+            <Field name="Input_#2_Chart" selected="True" Width="" Alignment="Center" />
+            <Field name="Image" selected="True" Width="" Alignment="Center" />
+            <Field name="Text" selected="True" Width="" Alignment="Center" />
+          </LayoutFields>
+          <MergeIntoTable value="False" />
+          <SectionNameForGroup />
+          <SectionNameForAllRecords />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Vertical Layout
+Each Individual Record</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerLayoutPlugin" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerLayout.PortfolioComposerLayout">
+        <Position x="942" y="366" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupingMode>PerRecord</GroupingMode>
+          <PreserveSourceFields value="False" />
+          <Orientation>H</Orientation>
+          <Separator>Continuous</Separator>
+          <Width>100%</Width>
+          <Height />
+          <BorderStyle Enabled="false" Color="#000000" Width="2" />
+          <SeparatorStyle Enabled="false" Color="#000000" Width="1" />
+          <Padding>0</Padding>
+          <LayoutFields orderChanged="False">
+            <Field name="Layout" selected="True" Alignment="Center" />
+          </LayoutFields>
+          <MergeIntoTable value="False" />
+          <SectionNameForGroup />
+          <SectionNameForAllRecords />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Horizontal Layout
+Each Individual Record</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerLayoutPlugin" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="ReportHeader">
+        <Position x="1038" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="HeaderText">weekly_sales</Value>
+          <Value name="OutputFormat">yyyy-MM-dd hh:mm:ss</Value>
+          <Value name="Language">English</Value>
+          <Value name="IncludeDate">True</Value>
+          <Value name="ImageFile">C:\Users\Ramakrishna\Downloads\Logo.jpg</Value>
+          <Value name="OwnLogo">true</Value>
+          <Value name="IncludeImage">True</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="ReportHeader\Supporting_Macros\RHEngine.yxmc" EngineDll="Macro" EngineDllEntryPoint="ReportHeader\Supporting_Macros\RHEngine.yxmc" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings>
+        <Position x="1134" y="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="CopyrightText">© [CurrentYear] Icloud Logic Pvt Ltd.  All rights reserved. Alteryx is a registered trademark of Alteryx, Inc.</Value>
+          <Value name="InfoText">Alteryx, Inc. - info@alteryx.com - &lt;Link www.alteryx.com|www.alteryx.com&gt;  - 9154473440</Value>
+          <Value name="PageNumbers">True</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="FooterMacro.yxmc" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerRender.PortfolioComposerRender">
+        <Position x="1230" y="414" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFileType />
+          <OutputFile>C:\Users\Ramakrishna\Downloads\sales Report data.pdf</OutputFile>
+          <BatchMode value="False" />
+          <DataField>Layout</DataField>
+          <Separator>Continuous</Separator>
+          <EmbedDependencies value="False" />
+          <ShowHeader value="True" />
+          <HeaderField>Header</HeaderField>
+          <ShowFooter value="True" />
+          <FooterField>Footer</FooterField>
+          <OnFirstPage value="False" />
+          <HeaderFooterEdge Distance="0" />
+          <PortraitMode value="True" />
+          <PaperType Width="595" Height="841" Left="36" Right="36" Top="36" Bottom="36" />
+          <DefaultStyles>
+            <Style Name="TextStyle" FontName="Arial" FontSize="14" Justify="Left" ForeColor="#000000" Locale="1033" />
+          </DefaultStyles>
+          <PNGResolution>1</PNGResolution>
+          <PNGLargerAction>squeeze</PNGLargerAction>
+          <PNGLargerThanPageChoice>warning</PNGLargerThanPageChoice>
+          <PNGTransparentBG value="False" />
+          <PNGBackColor value="#ffffff" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerRenderPlugin" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="942" y="234" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_8004_a0ac9ddb78aa574d8689c85ace73ab9b_\Engine_8004_d8b7485839b8b144b81f272d92d8d57e~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="22">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="750" y="438" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <Output>Text</Output>
+          <HeaderMode value="False" />
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\b\fs24 Reporting Time:- [DateTimeNow:A]\b0\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Reporting Time:- [DateTimeNow:...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="DateTimeNow">
+        <Position x="486" y="462" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Language">English</Value>
+          <Value name="OutputFormat">HH:mm:ss</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="DateTimeNow\Supporting_Macros\DTNEngine.yxmc" EngineDll="Macro" EngineDllEntryPoint="DateTimeNow\Supporting_Macros\DTNEngine.yxmc" />
+    </Node>
+    <Node ToolID="24">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerImage.PortfolioComposerImage">
+        <Position x="654" y="438" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ImageMode>File</ImageMode>
+          <Filename>C:\Users\Ramakrishna\Downloads\Logo.jpg</Filename>
+          <ModifyFilename value="False" />
+          <StopIfNotFound value="True" />
+          <ImageStyle FixedWidth="false" ImageWidth="200" ShowBorder="false" BorderWidth="1" BorderColor="#000000" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerImagePlugin" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output26" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Unique" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="12" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="23" Connection="DTN" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="12" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="24" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="18" Connection="Report Layout" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output13" />
+      <Destination ToolID="19" Connection="Report Layout" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="22" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="24" Connection="Output" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="False" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Image and Text tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="2d91a95e-d907-4480-8bb4-25e20aefe0f3" />
+      <Telemetry>
+        <PreviousWorkflowId value="a30502a0-cb07-473d-9d6e-0cb35ff393fd" />
+        <OriginWorkflowId value="1b8b5ece-e36d-4a26-82b9-5b6b954f2f69" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

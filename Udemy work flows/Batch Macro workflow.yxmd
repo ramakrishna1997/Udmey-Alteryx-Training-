@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="54" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="4" />
+          <Fields>
+            <Field name="Product" />
+            <Field name="Price" />
+          </Fields>
+          <Data>
+            <r>
+              <c>A</c>
+              <c>10.99</c>
+            </r>
+            <r>
+              <c>B</c>
+              <c>12.96</c>
+            </r>
+            <r>
+              <c>C</c>
+              <c>13.45</c>
+            </r>
+            <r>
+              <c>D</c>
+              <c>69.78</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="4" />
+          <Fields>
+            <Field name="Product" />
+            <Field name="Price" />
+          </Fields>
+          <Data>
+            <r>
+              <c>A</c>
+              <c>10</c>
+            </r>
+            <r>
+              <c>B</c>
+              <c>43</c>
+            </r>
+            <r>
+              <c>C</c>
+              <c>56</c>
+            </r>
+            <r>
+              <c>D</c>
+              <c>76</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings>
+        <Position x="306" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="BatchMacroGroupBy"><![CDATA[Control=Product
+Input2=Product
+]]></Value>
+          <Value name="Input.Input2"><![CDATA[Price=Price
+]]></Value>
+          <Value name="ControlParams"><![CDATA[Control Parameter (5)=Price
+]]></Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name>our first batch macro (2)</Name>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output6">
+          <RecordInfo>
+            <Field name="Product" size="2147483647" source="TextInput:" type="V_String" />
+            <Field name="Price" source="TextInput:" type="Double" />
+            <Field name="Revenue" size="1073741823" source="Formula: [Price]*10" type="V_WString" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings Macro="D:\Desktop DATA\Macors workflow\our first batch macro.yxmc" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Control" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Batch Macro workflow</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="d719a2d8-4705-4920-9d07-eb635506c7a9" />
+      <Telemetry>
+        <PreviousWorkflowId value="8c4e2675-0528-45da-b86a-4b092964214d" />
+        <OriginWorkflowId value="8c4e2675-0528-45da-b86a-4b092964214d" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

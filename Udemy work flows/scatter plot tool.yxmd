@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="30" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Ramakrishna\Downloads\sales_data.csv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>,</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>sales_data.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Store" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="DayOfWeek" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="Date" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="Sales" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="Customers" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="Open" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="Promo" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="StateHoliday" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+            <Field name="SchoolHoliday" size="254" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings>
+        <Position x="330" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Select Fields">Store=True,DayOfWeek=True,Date=True,Sales=True,Customers=True,Open=True,Promo=True,StateHoliday=True,SchoolHoliday=True,Week_of_the_day=False</Value>
+          <Value name="Sample Data">False</Value>
+          <Value name="Number">True</Value>
+          <Value name="NNumber">5000</Value>
+          <Value name="Percent">False</Value>
+          <Value name="NPercent">10</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Predictive Tools\Field_Summary_Report.yxmc" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="450" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_16588_e8e2db1b4967044b94031a149a0f515d_\Engine_16588_3d1c30c0973a1a40b182f06fbe9c1106~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
+        <Position x="114" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Fields>
+            <Field field="Store" selected="True" />
+            <Field field="DayOfWeek" selected="True" />
+            <Field field="Date" selected="True" />
+            <Field field="Sales" selected="True" />
+            <Field field="Customers" selected="True" />
+            <Field field="Open" selected="True" />
+            <Field field="Promo" selected="True" />
+            <Field field="StateHoliday" selected="True" />
+            <Field field="SchoolHoliday" selected="True" />
+            <Field field="*Unknown" selected="True" />
+          </Fields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Store" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Int16" />
+            <Field name="DayOfWeek" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Byte" />
+            <Field name="Date" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Date" />
+            <Field name="Sales" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Int16" />
+            <Field name="Customers" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Int16" />
+            <Field name="Open" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Byte" />
+            <Field name="Promo" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Byte" />
+            <Field name="StateHoliday" size="1" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="String" />
+            <Field name="SchoolHoliday" source="File: C:\Users\Ramakrishna\Downloads\sales_data.csv" type="Byte" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAutoField" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="210" y="114" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="Switch([DayOfWeek],0,0,'Monday',1,'Tuesday',3,'Wednesday',4,'Thursday',5,'Friday',&#xA;6,'saturday',7,'Sunday')" field="Week_of_the_day" size="1073741823" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Week_of_the_day = Switch([DayOfWeek],0,0,'Monday',1,'Tuesday',3,'Wednesday',4,'T...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="6">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.PearsonCorrelation.PearsonCorrelation">
+        <Position x="330" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Fields orderChanged="False">
+            <Field name="Store" />
+            <Field name="DayOfWeek" />
+            <Field name="Sales" />
+            <Field name="Customers" />
+            <Field name="Open" />
+            <Field name="Promo" />
+            <Field name="SchoolHoliday" />
+            <Field name="*Unknown" selected="False" />
+          </Fields>
+          <Covariance value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxPearsonCorrelation" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings>
+        <Position x="342" y="270" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Input.Field Selection"><![CDATA[Variable1=Sales
+Variable2=DayOfWeek
+]]></Value>
+          <Value name="Enable Group By">False</Value>
+          <Value name="Select Field to Group By">DayOfWeek</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="SpearmanCorrCoeff.yxmc" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="366" y="378" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces json:Array="true" xmlns:json="http://james.newtonking.com/projects/json">
+              <type>scatter</type>
+              <mode>markers</mode>
+              <name>Scatter plot</name>
+              <xsrc>Sales</xsrc>
+              <ysrc>DayOfWeek</ysrc>
+              <aggregationField>xsrc</aggregationField>
+              <aggregationFunction>sum</aggregationFunction>
+              <aggregationFieldName>Sales</aggregationFieldName>
+            </Traces>
+            <Layout>
+              <title>
+                <text>
+                </text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+              </font>
+              <autosize>false</autosize>
+              <width>700</width>
+              <height>849</height>
+              <showlegend>true</showlegend>
+              <hovermode>closest</hovermode>
+              <xaxis>
+                <range>-1462835.6975138122</range>
+                <range>40763835.697513811</range>
+                <autorange>true</autorange>
+                <title>
+                  <text>Sales</text>
+                </title>
+                <type>linear</type>
+              </xaxis>
+              <yaxis>
+                <range>0.62462159434914222</range>
+                <range>7.3753784056508582</range>
+                <autorange>true</autorange>
+                <title>
+                  <text>DayOfWeek</text>
+                </title>
+                <type>linear</type>
+              </yaxis>
+            </Layout>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="474" y="378" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\RAMAKR~1\AppData\Local\Temp\Engine_16588_e8e2db1b4967044b94031a149a0f515d_\Engine_16588_e0982be0b8d18949a60249694bb695a3~.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Reports" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="2" Connection="Field Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="7" Connection="Field Selection" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>scatter plot tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="07bdfd8e-4eb4-4e68-8648-440e8638b33f" />
+      <Telemetry>
+        <PreviousWorkflowId value="8f3b9fba-5326-4ea4-a1da-1cc8563fa174" />
+        <OriginWorkflowId value="b458aeed-41cd-4ada-b677-f51e0dd6ffd2" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

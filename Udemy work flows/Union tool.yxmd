@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Ramakrishna\Downloads\employees.csv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>,</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>employees.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="id" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" />
+            <Field name="store_id" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" />
+            <Field name="first_name" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" />
+            <Field name="last_name" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" />
+            <Field name="Entry date" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" />
+            <Field name="Head_of_store" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+        <Position x="54" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <NumRows value="2" />
+          <Fields>
+            <Field name="id" />
+            <Field name="store_id" />
+            <Field name="first_name" />
+            <Field name="last_name" />
+            <Field name="Entry date" />
+            <Field name="Head_of_store" />
+          </Fields>
+          <Data>
+            <r>
+              <c>9</c>
+              <c>10</c>
+              <c>Johon</c>
+              <c>Maggi</c>
+              <c>4/28/2017</c>
+              <c>1</c>
+            </r>
+            <r>
+              <c>10</c>
+              <c>8</c>
+              <c>sophia</c>
+              <c>buler</c>
+              <c>10/24/2023</c>
+              <c>1</c>
+            </r>
+          </Data>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="246" y="90" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <AutoResetMode>ByName</AutoResetMode>
+          <MultiMetaInfo>
+            <MetaInfo name="#1">
+              <RecordInfo>
+                <Field name="id" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" column="1" />
+                <Field name="store_id" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" column="2" />
+                <Field name="first_name" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" column="3" />
+                <Field name="last_name" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" column="4" />
+                <Field name="Entry date" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" column="5" />
+                <Field name="Head_of_store" size="254" source="File: C:\Users\Ramakrishna\Downloads\employees.csv" type="V_String" column="6" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo name="#2">
+              <RecordInfo>
+                <Field name="id" source="TextInput:" type="Int32" column="1" />
+                <Field name="store_id" source="TextInput:" type="Int32" column="2" />
+                <Field name="first_name" size="2147483647" source="TextInput:" type="V_String" column="3" />
+                <Field name="last_name" size="2147483647" source="TextInput:" type="V_String" column="4" />
+                <Field name="Entry date" size="2147483647" source="TextInput:" type="V_String" column="5" />
+                <Field name="Head_of_store" source="TextInput:" type="Int32" column="6" />
+              </RecordInfo>
+            </MetaInfo>
+          </MultiMetaInfo>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ManualDelayed</Mode>
+          <SetOutputOrder value="True" />
+          <OutputOrder>
+            <Connection>#1</Connection>
+            <Connection>#2</Connection>
+          </OutputOrder>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection name="#1">
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Union tool</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="3f0f853f-3b6d-4762-88eb-a32cb2974a9f" />
+      <Telemetry>
+        <PreviousWorkflowId value="f5be9ef9-b26f-450e-b3b6-258e6c5d17fa" />
+        <OriginWorkflowId value="f5be9ef9-b26f-450e-b3b6-258e6c5d17fa" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

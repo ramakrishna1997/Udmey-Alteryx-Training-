@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>sales_consolidated.xlsx
+Query=`Sales$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Store" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Double" />
+            <Field name="Date" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Date" />
+            <Field name="Min_Temperature (in Celcius)" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Double" />
+            <Field name="Min_Fuel_Price" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Double" />
+            <Field name="Min_CPI" size="255" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="V_String" />
+            <Field name="Min_IsHoliday" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Bool" />
+            <Field name="Min_Temperature (in Celcius)2" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Double" />
+            <Field name="Min_New_CPI" size="255" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="V_String" />
+            <Field name="Min_New_Unemployment" size="255" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="V_String" />
+            <Field name="Sum_Weekly_Sales" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="Double" />
+            <Field name="Month" size="255" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="V_String" />
+            <Field name="Year" size="255" source="File: D:\Desktop DATA\Udemy tasks\Macro Assignment\sales_consolidated.xlsx|||`Sales$`" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings>
+        <Position x="186" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Input.Input2"><![CDATA[weekly_sales=Sum_Weekly_Sales
+]]></Value>
+          <Value name="Drop Down (4)"><![CDATA[ 73.54]]></Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro=".\Exchange rate.yxmc" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input2" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Assignment-7</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="e5b24818-2bc7-4463-a195-03e6028196bc" />
+      <Telemetry>
+        <PreviousWorkflowId value="a1758cb0-6829-4178-ae3d-1a9f3d3b1fc9" />
+        <OriginWorkflowId value="a1758cb0-6829-4178-ae3d-1a9f3d3b1fc9" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
